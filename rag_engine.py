@@ -79,9 +79,13 @@ PDF内容:
 
     try:
         # 格式化prompt
+        # 调用LLM - 添加编码处理
         formatted_prompt = prompt.format(pdf_text=truncated_text)
 
-        # 调用LLM - 使用invoke方法
+        # 确保prompt是UTF-8编码
+        if isinstance(formatted_prompt, str):
+            formatted_prompt = formatted_prompt.encode('utf-8').decode('utf-8')
+
         response = llm.invoke(formatted_prompt)
 
         # 提取返回内容
