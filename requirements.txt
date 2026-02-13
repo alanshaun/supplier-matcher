@@ -1,0 +1,15 @@
+langchain
+langchain-core
+langchain-google-genai
+google-generativeai
+pypdf
+faiss-cpu
+numpy
+google-search-results
+streamlit
+pandas
+openpyxl
+plotly
+python-dotenv
+langchain-openai
+openai

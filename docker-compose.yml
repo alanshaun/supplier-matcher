@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  supplier-matcher:
+    build: .
+    container_name: supplier-matcher
+    ports:
+      - "8501:8501"
+    volumes:
+      # 持久化知识库数据
+      - ./data/knowledge_base:/app/data/knowledge_base
+      # 持久化结果
+      - ./data:/app/data
+    environment:
+      # API Keys从.env文件读取
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - SERPAPI_KEY=${SERPAPI_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# 数据持久化卷
+volumes:
+  knowledge_base:
+    driver: local

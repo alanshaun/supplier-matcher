@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.venv1/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# 测试和临时文件
+*.log
+*.tmp
+test_*.py
+debug_*.py
+
+# 文档
+README.md
+*.md
+!DEPLOYMENT_GUIDE.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 大文件
+*.pdf
+*.zip
+*.tar.gz
+
+# 但保留知识库数据结构
+!data/knowledge_base/.gitkeep

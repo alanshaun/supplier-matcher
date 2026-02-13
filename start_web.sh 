@@ -1,0 +1,41 @@
+#!/bin/bash
+# Streamlit启动脚本
+
+echo "=========================================="
+echo "🚀 启动供应商智能匹配系统 Web界面"
+echo "=========================================="
+
+# 检查虚拟环境
+if [[ "$VIRTUAL_ENV" == "" ]]; then
+    echo "⚠️  虚拟环境未激活"
+    echo "正在激活虚拟环境..."
+    source ../.venv/bin/activate || source ../.venv1/bin/activate
+fi
+
+# 检查依赖
+echo ""
+echo "📦 检查依赖..."
+python -c "import streamlit" 2>/dev/null
+if [ $? -ne 0 ]; then
+    echo "❌ Streamlit未安装"
+    echo "正在安装..."
+    pip install streamlit pandas openpyxl plotly
+fi
+
+echo ""
+echo "✅ 准备就绪！"
+echo ""
+echo "=========================================="
+echo "🌐 Web界面地址:"
+echo "   http://localhost:8501"
+echo "=========================================="
+echo ""
+echo "💡 使用Ctrl+C停止服务"
+echo ""
+
+# 启动Streamlit
+streamlit run streamlit_app/app.py \
+    --server.port 8501 \
+    --server.address localhost \
+    --theme.base light \
+    --theme.primaryColor "#1f77b4"

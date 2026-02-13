@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+*.pyo
+.Python
+env/
+venv/
+.venv/
+.venv1/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# 环境变量（重要！不要上传API Keys）
+.env
+
+# 临时文件
+*.log
+*.tmp
+data/knowledge_base/*.index
+data/knowledge_base/*.json
+data/*.txt
